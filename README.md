@@ -10,4 +10,9 @@ Board size reduced by 0.2" in X and Y dimensions. Added board clearance margin t
 
 Notes: The V1 board accommodated 6 PIN sensor diodes. V2 now adds the capacity to add up to six more on the back side of the board. But there is a tradeoff: Photodiode transimpedance amplifiers exhibit voltage noise peaking proportional to (C_diode / C_integrator). With the V2 improved CMRR and the lower noise of U1, I was able to lower the comparator event threshold from 350mV to 200mV (increased sensitivity), while maintaining margin over noise, with 6 diodes. As the number of diodes increases, the TIA amp noise peaking increases, so that the threshold would need to be increased (sensitivity reduced) so that the detector doesn't trigger on noise. The component settings for the comparator (200mV) are good for 6 diodes. 225-250mV should be good for up to 8-9 diodes. I do not recommend going past 9 diodes - there would be no benefit due to reduced sensitivity.
 
-A basic oscilloscope is recommended to verify function and identify potential interference sources during testing. Do not exceed 5.5V Vcc.
+A basic oscilloscope is needed to verify function and identify potential interference sources during testing. Do not exceed 5.5V Vcc.
+
+
+Notes, 6/11/23:
+I discovered that the input DC common-mode range of U1 was being violated for lower Vcc voltages, so I lowered Vcm from 2.5V to 1.37V, with the pulse trigger threshold now set to 1.13V (meaning that analog events >240mV will trigger a logic pulse from U2A). The corresponding component changes are: R16 changed from "DNP" to 120K, R6 chamged from 1.1M to 82K.
+I also have lowered the pole frequency at the output of the U3B Vcm generator. Component changes: R17 goes from 220 to 1K, C18 goes from 0.1µF to 4.7µF. I will change the schematic and BOM values to reflect this.

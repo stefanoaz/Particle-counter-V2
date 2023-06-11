@@ -15,4 +15,4 @@ A basic oscilloscope is needed to verify function and identify potential interfe
 
 Notes, 6/11/23:
 I discovered that the input DC common-mode range of U1 was being violated for lower Vcc voltages, so I lowered Vcm from 2.5V to 1.37V, with the pulse trigger threshold now set to 1.13V (meaning that analog events >240mV will trigger a logic pulse from U2A). The corresponding component changes are: R16 changed from "DNP" to 120K, R6 chamged from 1.1M to 82K.
-I also have lowered the pole frequency at the output of the U3B Vcm generator. Component changes: R17 goes from 220 to 1K, C18 goes from 0.1µF to 4.7µF. I will change the schematic and BOM values to reflect this.
+I also have lowered the pole frequency at the output of the U3B Vcm generator. Component changes: R17 goes from 220 to 1K, C18 goes from 0.1µF to 4.7µF. I will change the schematic and BOM values to reflect this. Vcc range: 3.0-5.5V.
